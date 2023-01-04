@@ -50,6 +50,12 @@ Route::post('user/insert', [UserController::class, 'insert']);
 
 
 
+//Profile
+Route::get('profile/index', [ProfileController::class, 'index']);
+
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

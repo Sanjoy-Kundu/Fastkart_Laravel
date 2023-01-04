@@ -140,8 +140,16 @@
                         </li>
                         <li class="profile-nav onhover-dropdown pe-0 me-0">
                             <div class="media profile-media">
-                                <img class="user-profile rounded-circle"
-                                    src="{{ Avatar::create(auth()->user()->name)->toBase64() }}" />
+
+                                @if (auth()->user()->profile_photo)
+                                    <img class="user-profile rounded-circle" style="object-fit: cover;"
+                                        src="  {{ asset('uploads/user_photos') }}/{{ auth()->user()->profile_photo }}" />
+                                @else
+                                    <img class="user-profile rounded-circle"
+                                        src="{{ asset('uploads/user_photos/user_default.jpg') }}" />
+                                @endif
+                                {{--       <img class="user-profile rounded-circle"
+                                    src="{{ Avatar::create(auth()->user()->name)->toBase64() }}" /> --}}
                                 <div class="user-name-hide media-body">
                                     <span>{{ auth()->user()->name }}</span>
                                     <p class="mb-0 font-roboto">{{ auth()->user()->role }}<i
@@ -150,9 +158,9 @@
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
                                 <li>
-                                    <a href="all-users.html">
+                                    <a href="{{ url('profile/index') }}">
                                         <i data-feather="users"></i>
-                                        <span>Users</span>
+                                        <span>Profile</span>
                                     </a>
                                 </li>
                                 <li>
