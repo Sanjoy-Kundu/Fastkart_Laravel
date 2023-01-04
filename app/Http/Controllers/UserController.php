@@ -7,6 +7,10 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
+//mail
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AccountCreation;
+
 
 class UserController extends Controller
 {
@@ -56,11 +60,22 @@ class UserController extends Controller
            User::find($user_id)->update([
             'profile_photo' => $user_photo_name
            ]);
-
-           return back()->withSuccess("User Information Create Successfully!");
         }
+            //email working start
+            /* echo $request->name;
+            echo $request->email;
+            echo $makePassword;
+            echo $request->role; */
+            //email working end
+            $info = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'role' => $request->role,
+                'password' => $makePassword
+            ];
 
-
+            Mail::to($request->user())->send(new AccountCreation($info));
+           return back()->withSuccess("User Information Create Successfully!");
 
     }
 }
