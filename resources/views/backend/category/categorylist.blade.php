@@ -68,7 +68,7 @@
                                                 <td>
                                                     <ul>
                                                         <li>
-                                                            <a href="order-detail.html">
+                                                            <a href="{{ url('category/details') }}">
                                                                 <i class="ri-eye-line"></i>
                                                             </a>
                                                         </li>

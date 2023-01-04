@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class UserController extends Controller
 {
@@ -12,6 +16,51 @@ class UserController extends Controller
     }
 
     function list(){
-        return view('backend.user.userlist');
+        $users = User::latest()->get();
+        return view('backend.user.userlist', compact('users'));
+    }
+
+
+
+
+
+    function insert(Request $request){
+         $request->validate([
+            'name' => 'required || max:30',
+            'email' => 'required',
+            'role' => 'required'
+         ],
+        [
+            'name.required' => "Name field is required",
+            'email.required' => "Email field is required",
+            'role.required' => 'Please Select One'
+        ]);
+
+         $makePassword = Str::upper(Str::random(8));
+         $user_id = User::insertGetId([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($makePassword),
+            'created_at' => Carbon::now(),
+            'role' => $request->role
+         ]);
+
+
+         //return $request->file('user_photo');
+         if($request->hasFile('user_photo')){
+            $user_photo_name =  Str::lower(Str::random(20)).'.'.$request->file('user_photo')->extension();
+             $photo_path = 'uploads/user_photos/'.$user_photo_name;
+           Image::make($request->file('user_photo'))->save($photo_path);
+
+           //database
+           User::find($user_id)->update([
+            'profile_photo' => $user_photo_name
+           ]);
+
+           return back()->withSuccess("User Information Create Successfully!");
+        }
+
+
+
     }
 }

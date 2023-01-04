@@ -46,6 +46,7 @@ Route::get('category/permanent/delete/{category_id}', [CategoryController::class
 //USER
 Route::get('user/add', [UserController::class, 'index']);
 Route::get('user/list', [UserController::class, 'list']);
+Route::post('user/insert', [UserController::class, 'insert']);
 
 
 

@@ -14,14 +14,20 @@
                                     <div class="card-header-2">
                                         <h5>Add New User</h5>
                                     </div>
-
-                                    <form class="theme-form theme-form-2 mega-form">
-
+                                    @if (session('success'))
+                                        <div class="alert alert-danger">{{ session('success') }}</div>
+                                    @endif
+                                    <form action="{{ url('user/insert') }}" method="POST"
+                                        class="theme-form theme-form-2 mega-form" enctype="multipart/form-data">
+                                        @csrf
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0">User Name</label>
                                             <div class="col-sm-9">
                                                 <input class="form-control" type="text" placeholder="User Name"
-                                                    name="user_name">
+                                                    name="name" value="{{ old('name') }}">
+                                                @error('name')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -29,7 +35,24 @@
                                             <label class="form-label-title col-sm-3 mb-0">User Email</label>
                                             <div class="col-sm-9">
                                                 <input class="form-control" type="email" placeholder="xyz@gmail.com"
-                                                    name="user_email">
+                                                    name="email" value="{{ old('email') }}">
+                                                @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4 row align-items-center">
+                                            <label class="form-label-title col-sm-3 mb-0">Role</label>
+                                            <div class="col-sm-9">
+                                                <select name="role" id="" class="form-control">
+                                                    <option value="">---select one ---</option>
+                                                    <option value="admin">Admin</option>
+                                                    <option value="vendor">Vendor</option>
+                                                </select>
+                                                @error('role')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
 
@@ -38,7 +61,7 @@
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0">User Image</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="file" name="user_image">
+                                                <input class="form-control" type="file" name="user_photo">
                                             </div>
                                         </div>
 

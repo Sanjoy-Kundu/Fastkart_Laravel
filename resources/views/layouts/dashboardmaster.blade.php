@@ -144,7 +144,8 @@
                                     src="{{ Avatar::create(auth()->user()->name)->toBase64() }}" />
                                 <div class="user-name-hide media-body">
                                     <span>{{ auth()->user()->name }}</span>
-                                    <p class="mb-0 font-roboto">Admin<i class="middle ri-arrow-down-s-line"></i></p>
+                                    <p class="mb-0 font-roboto">{{ auth()->user()->role }}<i
+                                            class="middle ri-arrow-down-s-line"></i></p>
                                 </div>
                             </div>
                             <ul class="profile-dropdown onhover-show-div">
@@ -274,21 +275,23 @@
                                         </li>
                                     </ul>
                                 </li>
+                                @if (auth()->user()->role == 'admin')
+                                    <li class="sidebar-list">
+                                        <a class="sidebar-link sidebar-title" href="javascript:void(0)">
+                                            <i class="ri-user-3-line"></i>
+                                            <span>Users</span>
+                                        </a>
+                                        <ul class="sidebar-submenu">
+                                            <li>
+                                                <a href="{{ url('user/list') }}">All users</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ url('user/add') }}">Add new user</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                @endif
 
-                                <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title" href="javascript:void(0)">
-                                        <i class="ri-user-3-line"></i>
-                                        <span>Users</span>
-                                    </a>
-                                    <ul class="sidebar-submenu">
-                                        <li>
-                                            <a href="{{ url('user/list') }}">All users</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ url('user/add') }}">Add new user</a>
-                                        </li>
-                                    </ul>
-                                </li>
                                 <li class="sidebar-list">
                                     <a class="sidebar-link sidebar-title" href="javascript:void(0)">
                                         <i class="ri-archive-line"></i>
