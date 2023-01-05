@@ -85,9 +85,7 @@
                                             <div class="col-sm-9">
                                                 <input class="form-control" type="text" name="profile_name"
                                                     value="{{ auth()->user()->name }}">
-                                                @error('current_password')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
+
                                             </div>
                                         </div>
                                         <div class="mb-4 row align-items-center">
@@ -108,8 +106,8 @@
                                     <div class="card-header-2">
                                         <h5>Update Your Password</h5>
                                     </div>
-                                    @if (session('success'))
-                                        <div class="alert alert-danger">{{ session('success') }}</div>
+                                    @if (session('error'))
+                                        <div class="alert alert-secondary">{{ session('error') }}</div>
                                     @endif
                                     <form action="{{ url('profile/password/change') }}" method="POST"
                                         class="theme-form theme-form-2 mega-form">
@@ -128,8 +126,8 @@
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput2" class="form-label">New Password</label>
                                             <input type="password" class="form-control" id="exampleFormControlInput2"
-                                                placeholder="new password .." name='new_password'>
-                                            @error('new_password')
+                                                placeholder="new password .." name='password'>
+                                            @error('password')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -138,8 +136,8 @@
                                             <label for="exampleFormControlInput2" class="form-label">Confirmation
                                                 Password</label>
                                             <input type="password" class="form-control" id="exampleFormControlInput2"
-                                                placeholder="confirm password .." name='confirm_password'>
-                                            @error('confrim_password')
+                                                placeholder="confirm password .." name='password_confirmation '>
+                                            @error('password_confirmation ')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>

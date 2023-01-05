@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -49,6 +50,26 @@ class ProfileController extends Controller
 
 
 
+
+
+
+//PROFILE PASSWORD CHANGE CORNER
+
+    public function passwordChange(Request $request){
+
+        $request->validate([
+            '*' => 'required'
+   
+        ]);
+          //  echo  $request->current_password;
+           // echo  auth()->user()->password;
+
+            if(Hash::check($request->current_password,  auth()->user()->password)){
+                echo "password milse";
+            }else{
+                return back()->withError("Password does't match");
+            }
+    }
 
 
 

@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 1. first e UserController ee giye form theke [name, email, password, role dhorbo]
 
 2. mail pathanor  jonno maitrap e jabo sikhan thekhe php 7+ select kore code copy paste korbo
@@ -59,6 +63,53 @@
                 <h3>Password: {{ $information['password'] }}</h3>
                 <h4>Role: {{ $information['role'] }}</h4>
             </body>
+
+
+          
+
+
+
+//PASSWORD CHANGE 
+Steps-01 : 
+password change korar jonno at first amay current password ke change dhorte hobe . database er password and   current input field er password ke milaite hobe. 
+
+                        
+    public function passwordChange(Request $request){
+            $request->validate([
+                'current_password' => 'required',
+                'password' => 'required || min:8',
+                'confirm_password' => 'required || min:8'
+            ],[
+                'current_password.required' => 'Current password is required',
+                'password.required' => "New  password is required",
+                'new_password.min' => "Password minimum 8 characters",
+                'confirm_password.required' => "Confirm password is required"
+            ]);
+            return $request->current_password; //current  password
+            return auth()->user()->passowrd;      //database password 
+            }
+
+Steps-02 
+akhon amder current password and database er passowrd milaite hobe. ai jonno amder if use kora jabe an amder laravel ei bole dibe laravel er documentation ee giye dekho password matching korar jonno se ki bole 
+
+                GOOLE ==> Laravel password check ==> Verifying That A Password Matches A Hash
+                Hash::check('plain-text', databasePassword)
+
+
+                new password and current password milanor jonno amder laravel.com ee jete hobe  next search korbo validation likhe 
+                find korbo confirm likhe next documentation dekhe code korbo 
+
+                new password name  == passowrd 
+                confirm password name == password_confirmation 
+                dibo 
+
+
+
+
+
+
+
+
 
 
 ?>
