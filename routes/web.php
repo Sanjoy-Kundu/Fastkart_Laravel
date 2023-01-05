@@ -52,6 +52,8 @@ Route::post('user/insert', [UserController::class, 'insert']);
 
 //Profile
 Route::get('profile/index', [ProfileController::class, 'index']);
+Route::post('profile/photo', [ProfileController::class, 'photoChange']);
+Route::post('profile/password/change', [ProfileController::class, 'passwordChange']);
 
 
 

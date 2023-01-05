@@ -9,7 +9,7 @@
                 <div class="col-5">
                     <div class="row">
                         <div class="col-sm-8 m-auto">
-                            <div class="card">
+                            <div class="card shadow p-3 mb-5 bg-body rounded">
                                 <div class="card-body">
                                     <div class="card-header-2">
                                         <h5>User Information</h5>
@@ -18,12 +18,13 @@
                                         <div class="alert alert-danger">{{ session('success') }}</div>
                                     @endif
                                     <div class="user-information">
-                                        <div class="img"
-                                            style="height: 250px; width:250px; border:1px solid gray;border-radius:50%;">
+                                        {{--      <div class="img"
+                                            style="height: 50%; width:60%; box-shadow:6px 7px 13px grey; border:1px solid gray;border-radius:50%; margin:0 auto;">
+                                             style="width: 100%; object-fir:cover; height:100%; border-radius:50%;" --}}
+                                        <div>
                                             @if (auth()->user()->profile_photo)
                                                 <img src="{{ asset('uploads/user_photos') }}/{{ auth()->user()->profile_photo }}"
-                                                    alt=""
-                                                    style="width: 100%; object-fir:cover; height:100%; border-radius:50%;">
+                                                    alt="" class="img-thumbnail rounded-pill">
                                             @else
                                                 <img src="{{ asset('uploads/user_photos/user_default.jpg') }}"
                                                     alt=""
@@ -45,7 +46,7 @@
                 <div class="col-7">
                     <div class="row">
                         <div class="col-sm-8 m-auto">
-                            <div class="card">
+                            <div class="card shadow p-3 mb-5 bg-body rounded">
                                 <div class="card-body">
                                     <div class="card-header-2">
                                         <h5>Update Your Profile</h5>
@@ -53,8 +54,8 @@
                                     @if (session('success'))
                                         <div class="alert alert-danger">{{ session('success') }}</div>
                                     @endif
-                                    <form action="{{ url('profile/password') }}" method="POST"
-                                        class="theme-form theme-form-2 mega-form">
+                                    <form action="{{ url('profile/photo') }}" method="POST"
+                                        class="theme-form theme-form-2 mega-form" enctype="multipart/form-data">
                                         @csrf
                                         <div class="mb-4 row align-items-center">
                                             <div class="img mx-auto"
@@ -92,7 +93,7 @@
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0"></label>
                                             <div class="col-sm-9">
-                                                <button type="submit" class="btn btn-danger">Add User</button>
+                                                <button type="submit" class="btn btn-danger">Change Profile</button>
                                             </div>
                                         </div>
                                     </form>
@@ -102,7 +103,7 @@
                     </div>
                     <div class="row mt-5">
                         <div class="col-sm-8 m-auto">
-                            <div class="card">
+                            <div class="card shadow p-3 mb-5 bg-body rounded">
                                 <div class="card-body">
                                     <div class="card-header-2">
                                         <h5>Update Your Password</h5>
@@ -110,45 +111,43 @@
                                     @if (session('success'))
                                         <div class="alert alert-danger">{{ session('success') }}</div>
                                     @endif
-                                    <form action="{{ url('profile/password') }}" method="POST"
+                                    <form action="{{ url('profile/password/change') }}" method="POST"
                                         class="theme-form theme-form-2 mega-form">
                                         @csrf
-                                        <div class="mb-4 row align-items-center">
-                                            <label class="form-label-title col-sm-3 mb-0">Current Password</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control" type="text" placeholder="Current Password"
-                                                    name="current_password">
-                                                @error('current_password')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="mb-4 row align-items-center">
-                                            <label class="form-label-title col-sm-3 mb-0">New Password</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control" type="text" placeholder="New Password"
-                                                    name="current_password">
-                                                @error('current_password')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="mb-4 row align-items-center">
-                                            <label class="form-label-title col-sm-3 mb-0">Confirmation Password</label>
-                                            <div class="col-sm-9">
-                                                <input class="form-control" type="text"
-                                                    placeholder="Confirmation Password" name="confirmation_password">
-                                                @error('confirmation_password')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput1" class="form-label">Current
+                                                Password</label>
+                                            <input type="password" class="form-control" id="exampleFormControlInput1"
+                                                placeholder="current password .." name='current_password'>
+                                            @error('current_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
 
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput2" class="form-label">New Password</label>
+                                            <input type="password" class="form-control" id="exampleFormControlInput2"
+                                                placeholder="new password .." name='new_password'>
+                                            @error('new_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlInput2" class="form-label">Confirmation
+                                                Password</label>
+                                            <input type="password" class="form-control" id="exampleFormControlInput2"
+                                                placeholder="confirm password .." name='confirm_password'>
+                                            @error('confrim_password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
 
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0"></label>
                                             <div class="col-sm-9">
-                                                <button type="submit" class="btn btn-danger">Add User</button>
+                                                <button type="submit" class="btn btn-danger">Change Password</button>
                                             </div>
                                         </div>
                                     </form>
