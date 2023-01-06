@@ -133,9 +133,9 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="exampleFormControlInput2" class="form-label">Confirmation
+                                            <label for="exampleFormControlInput3" class="form-label">Confirmation
                                                 Password</label>
-                                            <input type="password" class="form-control" id="exampleFormControlInput2"
+                                            <input type="password" class="form-control" id="exampleFormControlInput3"
                                                 placeholder="confirm password .." name='password_confirmation '>
                                             @error('password_confirmation ')
                                                 <span class="text-danger">{{ $message }}</span>

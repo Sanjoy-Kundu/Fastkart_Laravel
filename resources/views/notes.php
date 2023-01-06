@@ -1,8 +1,6 @@
 <?php
 
 
-
-
 1. first e UserController ee giye form theke [name, email, password, role dhorbo]
 
 2. mail pathanor  jonno maitrap e jabo sikhan thekhe php 7+ select kore code copy paste korbo
@@ -65,15 +63,15 @@
             </body>
 
 
-          
 
 
 
-//PASSWORD CHANGE 
-Steps-01 : 
-password change korar jonno at first amay current password ke change dhorte hobe . database er password and   current input field er password ke milaite hobe. 
 
-                        
+//PASSWORD CHANGE
+Steps-01 :
+password change korar jonno at first amay current password ke change dhorte hobe . database er password and   current input field er password ke milaite hobe.
+
+
     public function passwordChange(Request $request){
             $request->validate([
                 'current_password' => 'required',
@@ -86,24 +84,36 @@ password change korar jonno at first amay current password ke change dhorte hobe
                 'confirm_password.required' => "Confirm password is required"
             ]);
             return $request->current_password; //current  password
-            return auth()->user()->passowrd;      //database password 
+            return auth()->user()->passowrd;      //database password
             }
 
-Steps-02 
-akhon amder current password and database er passowrd milaite hobe. ai jonno amder if use kora jabe an amder laravel ei bole dibe laravel er documentation ee giye dekho password matching korar jonno se ki bole 
+Steps-02
+akhon amder current password and database er passowrd milaite hobe. ai jonno amder if use kora jabe an amder laravel ei bole dibe laravel er documentation ee giye dekho password matching korar jonno se ki bole
 
                 GOOLE ==> Laravel password check ==> Verifying That A Password Matches A Hash
                 Hash::check('plain-text', databasePassword)
 
 
-                new password and current password milanor jonno amder laravel.com ee jete hobe  next search korbo validation likhe 
-                find korbo confirm likhe next documentation dekhe code korbo 
+                new password and current password milanor jonno amder laravel.com ee jete hobe  next search korbo validation likhe
+                find korbo confirm likhe next documentation dekhe code korbo
 
-                new password name  == passowrd 
-                confirm password name == password_confirmation 
-                dibo 
+                new password name  == passowrd
+                confirm password name == password_confirmation
+                dibo
 
 
+                akhon amy check korte hobe je amar database er password er sathe ki ami jei password likbo seita thik ace ki na.
+
+                if(Hash::check($request->current_password, auth()->user()->password)){
+                    echo "password milse";
+                }else{
+                    echo "password mile nai";
+                }
+
+
+
+
+                Route list dekhar jonno php artisan route:list
 
 
 

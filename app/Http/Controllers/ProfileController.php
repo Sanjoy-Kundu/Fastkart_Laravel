@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+
 
 class ProfileController extends Controller
 {
@@ -56,10 +58,10 @@ class ProfileController extends Controller
 //PROFILE PASSWORD CHANGE CORNER
 
     public function passwordChange(Request $request){
-
+       // return $request;
         $request->validate([
-            '*' => 'required'
-   
+           '*' => 'required',
+           'password'=>['confirmed', Password::min(8)]
         ]);
           //  echo  $request->current_password;
            // echo  auth()->user()->password;

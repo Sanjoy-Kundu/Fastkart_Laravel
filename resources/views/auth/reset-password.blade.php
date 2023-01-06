@@ -1,39 +1,132 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
-        @csrf
+<!DOCTYPE html>
+<html lang="en">
 
-        <!-- Password Reset Token -->
-        <input type="hidden" name="token" value="{{ $request->route('token') }}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
+    <meta name="keywords"
+        content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app">
+    <meta name="author" content="pixelstrap">
+    <link rel="icon" href="{{ asset('assets') }}/images/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.png" type="image/x-icon">
+    <title>Fastkart - Forgot PassWord</title>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+    <!-- Google font-->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Fontawesome css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/font-awesome.css">
+
+
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/themify.css">
+
+    <!-- Feather icon css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/feather-icon.css">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/vendors/bootstrap.css">
+
+    <!-- App css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets') }}/css/style.css">
+</head>
+
+<body>
+
+    <!-- forgot password start -->
+    <section class="log-in-section section-b-space">
+        <a href="" class="logo-login"><img src="{{ asset('assets') }}/images/logo/1.png" alt=""
+                class="img-fluid"></a>
+        <div class="container w-100">
+            <div class="row">
+
+                <div class="col-xl-5 col-lg-6 me-auto">
+                    <div class="log-in-box">
+                        <div class="log-in-title">
+                            <h3>Welcome To Fastkart</h3>
+                            <h4>Reset Your Password</h4>
+                        </div>
+
+                        <div class="input-box">
+                            @if (session('status'))
+                                <div class="alert alert-secondary">{{ session('status') }}</div>
+                            @endif
+                            <!------Errors Start---->
+                            @if ($errors->any())
+                                @foreach ($errors->all() as $error)
+                                    <div class="alert alert-danger">
+                                        <ol>
+                                            <li>{{ $error }}</li>
+                                        </ol>
+                                    </div>
+                                @endforeach
+                            @endif
+                            <!----Errors End--->
+                            <form method="POST" action="{{ route('password.store') }}" class="row g-4">
+                                @csrf
+                                <div class="col-12">
+                                    <div class="form-floating theme-form-floating log-in-form">
+                                        <input type="hidden" class="form-control" id="email" name="token"
+                                            value="{{ $request->route('token') }}">
+                                        <label for="email">Enter Email Address</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-floating theme-form-floating log-in-form">
+                                        <input type="email" class="form-control" id="email"
+                                            placeholder="Email Address" name="email"
+                                            value="{{ old('email', $request->email) }}" required autofocus />
+                                        <label for="email">Enter Email Address</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="form-floating theme-form-floating log-in-form">
+                                        <input type="password" class="form-control" id="password"
+                                            placeholder="new password" name="password" required />
+                                        <label for="password">New Password</label>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-12">
+                                    <div class="form-floating theme-form-floating log-in-form">
+                                        <input type="password" class="form-control" id="password_confirmation"
+                                            placeholder="new password" name="password_confirmation" required />
+                                        <label for="password_confirmation">Confirm Password</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button class="btn btn-animation w-100 justify-content-center" type="submit">Email
+                                        Password Reset</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+    <!-- forgot password end -->
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+    <!-- latest jquery-->
+    <script src="{{ asset('assets') }}/js/jquery-3.6.0.min.js"></script>
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
+    <!-- Bootstrap js-->
+    <script src="{{ asset('assets') }}/js/bootstrap/bootstrap.bundle.min.js"></script>
 
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
+    <!-- Theme js-->
+    <script src="{{ asset('assets') }}/js/script.js"></script>
+</body>
 
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Reset Password') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

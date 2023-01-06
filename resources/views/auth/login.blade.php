@@ -73,7 +73,8 @@
                                                 id="flexCheckDefault" name="remember">
                                             <label class="form-check-label" for="flexCheckDefault">Remember me</label>
                                         </div>
-                                        <a href="forgot.html" class="forgot-password">Forgot Password?</a>
+                                        <a href="{{ url('forgot-password') }}" class="forgot-password">Forgot
+                                            Password?</a>
                                     </div>
                                 </div>
 
