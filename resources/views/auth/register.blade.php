@@ -76,6 +76,13 @@
                                     </div>
                                 </div>
 
+                                <div class="col-12 w-100">
+                                    {!! NoCaptcha::display() !!}
+                                </div>
+                                @error(session('g-recaptcha-response'))
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+
                                 <div class="col-12">
                                     <div class="form-floating theme-form-floating log-in-form">
                                         <input type="password" class="form-control" id="password_confirmation"
@@ -125,7 +132,7 @@
         </div>
     </section>
     <!-- login section end -->
-
+    {!! NoCaptcha::renderJs() !!}
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 1. first e UserController ee giye form theke [name, email, password, role dhorbo]
 
 2. mail pathanor  jonno maitrap e jabo sikhan thekhe php 7+ select kore code copy paste korbo
@@ -113,7 +113,66 @@ akhon amder current password and database er passowrd milaite hobe. ai jonno amd
 
 
 
-                Route list dekhar jonno php artisan route:list
+
+            Route list dekhar jonno (php artisan route:list)
+
+            Captcha Add korar jonno amder google er help nite hobe
+            setes-01
+            www.google.com ==> captcha laravel ==> github jeita lekha asbe seitay jabo but amra aitay jabo na
+            amra linkbo www.google.com ==> nocaptcha laravel ==> aitar github e jabo
+
+            documentation eee ja ja bolbe seita korbo
+            documentation
+            steps:
+             composer require anhskohbo/no-captcha
+
+             tarpor bolbe laravel 5.5 er upor hole aita skip korte paro but amra skip korbo na amar aita use korbo
+             app.php er moddy ===>
+             Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+             'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+             publish er jonno
+             php artisan vendor:publish --provider="Anhskohbo\NoCaptcha\NoCaptchaServiceProvider"
+
+             env file er moddey
+
+             NOCAPTCHA_SECRET=secret-key
+            NOCAPTCHA_SITEKEY=site-key
+            add korobo
+
+            akhon secrect-key and site-key amader google theke nite hobe
+            amra google giye search korbo
+
+           google.com =>  no captcha goole ==> google aitake dake noCaptcha google name
+           tai amra noCaptchagoogle ai link e jabo
+
+           Adding system
+           get->recaptcha ==>  ai link e dhuke
+           google recaptcha logo te click korbo
+           seikhan theke  V3AdminConsole e jabo
+
+           label er nam dibo amra project Fastkart name tai ai nam dilam
+           and recaptcher2 select korlam
+           amader domain name nai
+           tai amra amder port name http://127.0.0.1:8000/  aita dilam 127.0.0.1 aita dibo
+
+        then ai code duita pabo
+                NOCAPTCHA_SECRET=secret-key
+            NOCAPTCHA_SITEKEY=site-key
+
+
+            javascript add korte hobe
+             {!! NoCaptcha::renderJs() !!}
+
+             jeikhane dekhabo seikhane dibo
+                      {!! NoCaptcha::display() !!}
+
+
+                last im not a roboat ee kaj koraite hobe
+                github theke
+                'g-recaptcha-response' => 'required|captcha'
+
+                register user controller eee ai validate diye dibo
+                'g-recaptcha-response' => 'required|captcha'
 
 
 
@@ -121,5 +180,9 @@ akhon amder current password and database er passowrd milaite hobe. ai jonno amd
 
 
 
+
+
+
+*/
 
 ?>
