@@ -125,7 +125,7 @@
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput2" class="form-label">New Password</label>
-                                            <input type="password" class="form-control" id="exampleFormControlInput2"
+                                            <input type="text" class="form-control" id="exampleFormControlInput2"
                                                 placeholder="new password .." name='password'>
                                             @error('password')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -135,7 +135,7 @@
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput3" class="form-label">Confirmation
                                                 Password</label>
-                                            <input type="password" class="form-control" id="exampleFormControlInput3"
+                                            <input type="text" class="form-control" id="exampleFormControlInput3"
                                                 placeholder="confirm password .." name='password_confirmation '>
                                             @error('password_confirmation ')
                                                 <span class="text-danger">{{ $message }}</span>

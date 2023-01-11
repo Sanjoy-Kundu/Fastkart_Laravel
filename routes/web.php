@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\GithubController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -56,6 +58,15 @@ Route::post('profile/photo', [ProfileController::class, 'photoChange']);
 Route::post('profile/password/change', [ProfileController::class, 'passwordChange']);
 
 
+
+//Github
+Route::get('github/redirect', [GithubController::class, 'index']);
+Route::get('github/callback', [GithubController::class, 'callback']);
+
+
+//google
+Route::get('google/redirect', [GoogleController::class, 'index']);
+Route::get('google/callback', [GoogleController::class, 'callback']);
 
 
 Route::middleware('auth')->group(function () {

@@ -112,15 +112,16 @@
                         <div class="log-in-button">
                             <ul>
                                 <li>
-                                    <a href="https://www.google.com/" class="btn google-button w-100">
+                                    <a href="{{ url('google/redirect') }}" class="btn google-button w-100">
                                         <img src="../{{ asset('assets') }}/images/inner-page/google.png"
                                             class="blur-up lazyload" alt=""> Log In with Google
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.facebook.com/" class="btn google-button w-100">
+                                    <a href="{{ url('github/redirect') }}"
+                                        class="btn btn-secondary btn google-button w-100">
                                         <img src="../{{ asset('assets') }}/images/inner-page/facebook.png"
-                                            class="blur-up lazyload" alt=""> Log In with Facebook
+                                            class="blur-up lazyload" alt=""> Log In with Github
                                     </a>
                                 </li>
                             </ul>
