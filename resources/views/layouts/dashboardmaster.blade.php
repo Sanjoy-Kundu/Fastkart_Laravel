@@ -243,11 +243,11 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li>
-                                            <a href="products.html">Prodcts</a>
+                                            <a href="{{ route('product.index') }}">Prodcts List</a>
                                         </li>
 
                                         <li>
-                                            <a href="add-new-product.html">Add New Products</a>
+                                            <a href="{{ route('product.create') }}">Add New Products</a>
                                         </li>
                                     </ul>
                                 </li>

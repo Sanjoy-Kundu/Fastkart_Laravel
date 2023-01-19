@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GithubController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -44,6 +45,18 @@ Route::get('category/delete/{category_id}', [CategoryController::class, 'delete'
 Route::get('category/restore/{category_id}', [CategoryController::class, 'restore']);
 Route::get('category/permanent/delete/{category_id}', [CategoryController::class, 'pdelete']);
 
+
+
+
+//PRODUCT
+Route::resource('product', ProductController::class);
+/* Route::get('product', [ProductController::class, 'index'])->name('product.index'); //list show
+Route::get('product/create',[ProductController::class, 'create'])->name('product.create'); //form show
+Route::get('product/store', [ProductController::class, 'store'])->name('product.store'); //db store
+Route::get('product/show', [ProductController::class, 'show'])->name('product.show');//info show korar jonno
+Route::get('product/edit', [ProductController::class, 'edit'])->name('product.edit'); //form show korar jonno
+Route::get('product.update', [ProductController::class, 'update'])->name('product.update');//update korar jonno
+Route::get('product.destroy', [ProductController::class, 'destroy'])->name('product.destroy'); //delete korar jonno */
 
 
 
