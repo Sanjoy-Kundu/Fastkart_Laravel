@@ -61,7 +61,7 @@ class ProfileController extends Controller
        // return $request;
         $request->validate([
            '*' => 'required',
-           'password'=>'confirmed',
+           'password' => ['confirmed', Password::min(8)],
         ]);
           //  echo  $request->current_password;
            // echo  auth()->user()->password;
@@ -70,9 +70,13 @@ class ProfileController extends Controller
 
 
             if(Hash::check($request->current_password,  auth()->user()->password)){
-                echo "password milse";
+                //echo "password milse";
+                User::find(auth()->id())->update([
+                    'password' => bcrypt($request->password),
+                ]);
+                return back()->withSuccess('password change successfully');
             }else{
-                return back()->withError("Password does't match");
+                return back()->withError("current password does't match");
             }
     }
 

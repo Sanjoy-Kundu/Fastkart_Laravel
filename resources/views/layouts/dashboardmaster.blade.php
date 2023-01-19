@@ -71,7 +71,7 @@
             <div class="header-wrapper m-0">
                 <div class="header-logo-wrapper p-0">
                     <div class="logo-wrapper">
-                        <a href="index.html">
+                        <a href="{{ url('dashboard') }}">
                             <img class="img-fluid main-logo" src="{{ asset('assets') }}/images/logo/1.png"
                                 alt="logo">
                             <img class="img-fluid white-logo" src="{{ asset('assets') }}/images/logo/1-white.png"
@@ -80,7 +80,7 @@
                     </div>
                     <div class="toggle-sidebar">
                         <i class="status_toggle middle sidebar-toggle" data-feather="align-center"></i>
-                        <a href="index.html">
+                        <a href="{{ url('dashboard') }}">
                             <img src="{{ asset('assets') }}/images/logo/1.png" class="img-fluid" alt="">
                         </a>
                     </div>
@@ -201,7 +201,7 @@
                 <div id="sidebarEffect"></div>
                 <div>
                     <div class="logo-wrapper logo-wrapper-center">
-                        <a href="index.html" data-bs-original-title="" title="">
+                        <a href="{{ url('dashboard') }}" data-bs-original-title="" title="">
                             <img class="img-fluid for-white" src="{{ asset('assets') }}/images/logo/full-white.png"
                                 alt="logo">
                         </a>
@@ -213,7 +213,7 @@
                         </div>
                     </div>
                     <div class="logo-icon-wrapper">
-                        <a href="index.html">
+                        <a href="{{ url('dashboard') }}">
                             <img class="img-fluid main-logo main-white"
                                 src="{{ asset('assets') }}/images/logo/logo.png" alt="logo">
                             <img class="img-fluid main-logo main-dark"
@@ -230,7 +230,7 @@
                                 <li class="back-btn"></li>
 
                                 <li class="sidebar-list">
-                                    <a class="sidebar-link sidebar-title link-nav" href="index.html">
+                                    <a class="sidebar-link sidebar-title link-nav" href="{{ url('dashboard') }}">
                                         <i class="ri-home-line"></i>
                                         <span>Dashboard</span>
                                     </a>

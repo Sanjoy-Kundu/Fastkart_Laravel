@@ -106,6 +106,18 @@
                                     <div class="card-header-2">
                                         <h5>Update Your Password</h5>
                                     </div>
+
+                                    @if ($errors->any())
+                                        <div class="alert alert-danger">
+                                            @foreach ($errors->all() as $error)
+                                                <ul>
+                                                    <li>{{ $error }}</li>
+                                                </ul>
+                                            @endforeach
+                                        </div>
+                                    @endif
+
+
                                     @if (session('error'))
                                         <div class="alert alert-secondary">{{ session('error') }}</div>
                                     @endif

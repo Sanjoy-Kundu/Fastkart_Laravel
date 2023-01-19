@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BackendController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GithubController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProfileController;
@@ -19,11 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
 
-Route::get('/', [BackendController::class, 'index']);
+//FrontendController
+Route::get('/', [FrontendController::class, 'index']);
+
+
+
+/* Route::get('/', [BackendController::class, 'index']); */
 Route::get('dashboard', [BackendController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 /* Route::get('/dashboard', function () {

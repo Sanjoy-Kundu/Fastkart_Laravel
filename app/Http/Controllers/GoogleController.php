@@ -51,10 +51,6 @@ class GoogleController extends Controller
 
             Mail::to($user->getEmail())->send(new AccountCreation($info));
 
-
-
-
-
             return redirect('dashboard');
         }
     }
