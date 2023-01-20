@@ -15,17 +15,18 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_category_id');
+            $table->integer('category_id');
             $table->string('product_name');
             $table->float('purches_product_price', 9,2); //9 digit and 2 decimal ghor projonto jabe
             $table->float('regular_product_price', 9,2);
-            $table->float('product_discount_price',9,2);
+            $table->float('product_discount',9,2);
+            $table->float('discount_price', 9, 2);//auto genate
             $table->longText('short_description');
             $table->longText('long_description');
             $table->longText('additonal_information');
             $table->longText('care_instruction');
-            $table->text('product_thumbnail');
-            $table->text('product_features_photo');
+            $table->text('product_thumbnail')->nullable();
+            $table->text('product_features_photo')->nullable();
             $table->timestamps();
         });
     }

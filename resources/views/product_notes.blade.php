@@ -89,6 +89,51 @@ Data insert korar jonno amder table create korte hobe migration eee giye
 
 create_product_table e giye form er fill gulo fillup korlam and database e migrate korlam
 
+
+=========================PRODUCT DISCOUNT CALCULATION ====================
+amader product er form ee first e je jinish nite hobe seita hoilo
+::::::::::: steps-01 ::::::::::::::
+amra bolbo je (regular price 100 takay discount dibo 10%) akhon 10% e je 90 taka ase seita form er moddey dekhabe na seita dekhabe database eee tar jonno database e discount name akta field nibo.
+DATABASE E discount koto hobe seitar output newar jonno discount_price name akta field nilam aita auto genarate hobe
+
+
+:::::::::::::steps-02 :::::::::::::
+NEXT :: amder discout check korte hobe je discoutn field e koto perset discoutn dibe orthat jodi discount file fillup   thake tahole bolo je discount ace r naile bolo discoutn nai
+
+    if($request->product_discount_price){
+    echo "discount ace";
+    }else{
+        echo "discount nai";
+    }
+akhon jodi discount na dey tahole ki hobe
+databaser e discount dwar por je taka ase tar field ke dhorte hobe and jehetu discount nai
+tai sei field ee regular price ja ace tai hobe
+orthat
+  if($request->product_discount_price){
+    echo "discount ace";
+    }else{
+        echo "discount nai";
+        $discount_price = $request->regular_product_price;
+    }
+
+
+    ::::::::::steps-03 :::::::::
+                            jodi discount thake tahole discount hobe kisher upore seita khail korte hobe
+                            discount hobe regular price er upor eee
+aita holo discout taka
+             $request->regular_price *($requst->discount_price / 100);
+akhon amay ber korte hobe je discount bade koto taka ase
+regular price theke discount korte koto taka ase seita bad dite hobe ;
+  if($request->product_discount_price){
+    echo "discount ace";
+    $discount_price = ($request->regular_product_price * ($request->product_discount_price / 100)); //discount taka
+    $discount_price = $request->regular_product_price - ($request->regular_product_price * ($request->product_discount_price / 100)); //discount bade koto taka ase;
+    }else{
+
+    }
+
+
+
         ---------->
 </body>
 

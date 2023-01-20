@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -37,7 +38,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        if($request->product_discount_price){
+            //echo "discount ace";
+            //$discount_price = $request->regular_product_price * ($request->product_discount_price / 100);
+            $discount_price = $request->regular_product_price -  ($request->regular_product_price * ($request->product_discount_price / 100));
+        }else{
+            //echo "discount nai"; discount na thake hobe product er regular price
+            $discount_price = $request->regular_product_price;
+        }
+        //echo $discount_price;
+        Product::insert([
+            'category_id'=>$request->category_name,
+            'product_name'=>$request->product_name,
+            'purches_product_price'=>$request->purches_product_price,
+            'regular_product_price'=>$request->regular_product_price,
+            'product_discount'=>$request->product_discount_price,
+            'discount_price'=>$discount_price,
+            'short_description'=>$request->short_description,
+            'long_description'=>$request->long_description,
+            'additonal_information'=>$request->additonal_information,
+            'care_instruction'=>$request->care_instruction,
+            'product_thumbnail'=>$request->product_thumbnail,
+            'product_features_photo'=>$request->product_features_photo,
+            'created_at'=>Carbon::now(),
+        ]);
+        return back()->withSuccess("Product Inserted Successfully");
     }
 
     /**

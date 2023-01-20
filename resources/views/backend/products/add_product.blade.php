@@ -25,7 +25,7 @@
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0">Category Name**</label>
                                             <div class="col-sm-9">
-                                                <select name="product_category_id" id="" class="form-control">
+                                                <select name="category_name" id="" class="form-control">
                                                     <option value="select-one">select one</option>
                                                     @foreach ($allCategories as $category)
                                                         <option value="{{ $category->id }}">{{ $category->category_name }}
