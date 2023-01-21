@@ -48,8 +48,29 @@
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0">Category Image</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="file" name="category_image">
+                                                <input class="form-control" type="file" name="category_image"
+                                                    onchange="readURL(this);">
                                             </div>
+                                            <div class="col-sm-3"></div>
+                                            <div class="col-sm-9 mt-2">
+                                                <img src="#" alt="not found" class="w-50 mx-auto hidden"
+                                                    id="category_photo_viewer">
+                                            </div>
+
+                                            {{-- javascipt start --}}
+                                            <script>
+                                                function readURL(input) {
+                                                    if (input.files && input.files[0]) {
+                                                        var reader = new FileReader();
+                                                        reader.onload = function(e) {
+                                                            $('#category_photo_viewer').attr('src', e.target.result).width(150).height(195);
+                                                        };
+                                                        $('#category_photo_viewer').removeClass('hidden');
+                                                        reader.readAsDataURL(input.files[0]);
+                                                    }
+                                                }
+                                            </script>
+                                            {{-- javascript end  --}}
                                             @error('category_image')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
