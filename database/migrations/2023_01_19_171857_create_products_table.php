@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->integer('category_id');
+            $table->integer('users_id');
             $table->string('product_name');
             $table->float('purches_product_price', 9,2); //9 digit and 2 decimal ghor projonto jabe
             $table->float('regular_product_price', 9,2);
@@ -26,7 +27,7 @@ return new class extends Migration
             $table->longText('additonal_information');
             $table->longText('care_instruction');
             $table->text('product_thumbnail')->nullable();
-            $table->text('product_features_photo')->nullable();
+           // $table->text('product_features_photo')->nullable();
             $table->timestamps();
         });
     }

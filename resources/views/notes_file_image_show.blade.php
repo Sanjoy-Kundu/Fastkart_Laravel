@@ -9,7 +9,7 @@
 </head>
 
 <body>
-
+    <h1>Form Ean sir github</h1>
     <div class="col-md-6">
         <div class="form-group">
             <label>{{ __('Tenant Photo') }}</label>

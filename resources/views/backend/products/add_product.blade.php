@@ -32,7 +32,7 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                @error('product_category')
+                                                @error('category_name')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -148,18 +148,38 @@
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0">Product Thumbnail</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="file" name="product_thumbnail">
+                                                <input class="form-control" type="file" name="product_thumbnail"
+                                                    onchange="readURL(this);">
+                                                @error('product_thumbnail')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
-                                            @error('product_thumbnail')
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                            <div class="row">
+                                                <div class="col-sm-3"></div>
+                                                <div class="col-sm-9">
+                                                    <img src="{{ asset('uploads/products_photos/product_upload_avatar.png') }}"
+                                                        alt="" id="tenant_photo_viewer">
+                                                    <script>
+                                                        function readURL(input) {
+                                                            if (input.files && input.files[0]) {
+                                                                var reader = new FileReader();
+                                                                reader.onload = function(e) {
+                                                                    $('#tenant_photo_viewer').attr('src', e.target.result).width(300).height(250);
+                                                                };
+                                                                $('#tenant_photo_viewer').removeClass('hidden');
+                                                                reader.readAsDataURL(input.files[0]);
+                                                            }
+                                                        }
+                                                    </script>
+                                                </div>
+                                            </div>
                                         </div>
-
 
                                         <div class="mb-4 row align-items-center">
                                             <label class="form-label-title col-sm-3 mb-0">Product Features Photo</label>
                                             <div class="col-sm-9">
-                                                <input class="form-control" type="file" name="product_features_photo">
+                                                <input class="form-control" type="file"
+                                                    name="product_features_photo[]" multiple>
                                             </div>
                                             @error('product_features_photo')
                                                 <span class="text-danger">{{ $message }}</span>

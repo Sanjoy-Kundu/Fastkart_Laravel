@@ -93,6 +93,7 @@
                                 <i class="ri-search-line"></i>
                             </span>
                         </li>
+
                         <li class="onhover-dropdown">
                             <div class="notification-box">
                                 <i class="ri-notification-line"></i>
@@ -137,6 +138,11 @@
                             <div class="mode">
                                 <i class="ri-moon-line"></i>
                             </div>
+                        </li>
+                        <li>
+
+                            <a href="{{ url('/') }}" class="btn btn-info">visit site</a>
+
                         </li>
                         <li class="profile-nav onhover-dropdown pe-0 me-0">
                             <div class="media profile-media">
